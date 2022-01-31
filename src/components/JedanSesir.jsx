@@ -2,18 +2,19 @@ import React from 'react';
 import {AiFillPlusCircle} from "react-icons/ai"
 import {AiFillMinusCircle} from "react-icons/ai"
 
-function JedanSesir() {
+function JedanSesir({product, onAdd, remove}) {
+    
   return <div className='card'>
-      <img className='card-img-top' src="https://i.factcool.com/cache2/410x615/catalog/products/14/df/90/14-df-90db6cd5k001_LA_120.jpg" alt="" />
+      <img className='card-img-top' src={product.slika} alt="" />
       <div className="card-body">
-          <h3 className="card-title">Sesir</h3>
-          <p className="card-text">Ovo je klasican sesir za sve prilike.</p>
+          <h3 className="card-title">{product.naslov}</h3>
+          <p className="card-text">{product.opis}</p>
       </div>
-      <button className="btn">
-           <AiFillPlusCircle />
+      <button className="btn" onClick={()=>onAdd(product.naslov)}>
+           <AiFillPlusCircle /> Dodaj
      </button>
-      <button className="btn">
-           <AiFillMinusCircle />
+      <button className="btn" onClick={()=>remove(product.naslov)}>
+           <AiFillMinusCircle /> Izbrisi
       </button>
   </div>;
 }

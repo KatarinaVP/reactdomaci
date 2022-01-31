@@ -1,11 +1,11 @@
 import React from 'react';
 import JedanSesir from "./JedanSesir";
 
-const Sesiri = () => {
+const Sesiri = ({product, onAdd, remove}) => {
+
   return <div className='all-products'>
-      <JedanSesir />
-      <JedanSesir />
-      <JedanSesir />
+      {product.map((proizvod)=>(<JedanSesir product={proizvod} key={product.id} onAdd={onAdd} remove={remove}/>) 
+      )}
       
   </div>;
 };
