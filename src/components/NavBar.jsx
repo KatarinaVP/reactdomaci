@@ -1,15 +1,16 @@
 import React from 'react';
 import {AiOutlineShoppingCart} from "react-icons/ai"
+import {Link} from "react-router-dom";
 
 function NavBar({proizvodUKorpi}) {
     
-  return <div className='navBar'>
-      <a href=""> M&M Couture - luxury hats</a>
+  return <div className='navigacija'>
+      <Link to="/"> M&M Couture - hats</Link>
    
-     <div className="cart-items">
+     <Link to="/korpa" className="kolica">
           <AiOutlineShoppingCart />
-          <p className="cart-number">{proizvodUKorpi}</p>
-      </div>
+          <p className="broj">{proizvodUKorpi}</p>
+      </Link>
     
   </div>;
 }

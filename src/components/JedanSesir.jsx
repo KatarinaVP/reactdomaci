@@ -2,20 +2,28 @@ import React from 'react';
 import {AiFillPlusCircle} from "react-icons/ai"
 import {AiFillMinusCircle} from "react-icons/ai"
 
-function JedanSesir({product, onAdd, remove}) {
+function JedanSesir({product, onAdd, remove, uKorpi}) {
     
-  return <div className='card'>
-      <img className='card-img-top' src={product.slika} alt="" />
+  return <div className={uKorpi === 1 ? "card" : "card-cart"}>
+      <img className={uKorpi === 1 ? "card-img-top" : "card-uKorpi"} src={product.slika} alt="" />
       <div className="card-body">
           <h3 className="card-title">{product.naslov}</h3>
           <p className="card-text">{product.opis}</p>
       </div>
-      <button className="btn" onClick={()=>onAdd(product.naslov)}>
+
+      {uKorpi === 1 ? (
+      <>
+      <button className="button" onClick={()=>onAdd(product.naslov)}>
            <AiFillPlusCircle /> Dodaj
      </button>
-      <button className="btn" onClick={()=>remove(product.naslov)}>
+      <button className="button" onClick={()=>remove(product.naslov)}>
            <AiFillMinusCircle /> Izbrisi
       </button>
+      </>
+      ) : (<>
+      <h3 className='button'>Kolicina: {product.kolicina}</h3>
+      </>) }
+      
   </div>;
 }
 
