@@ -1,27 +1,27 @@
 import React from 'react';
-import {AiFillPlusCircle} from "react-icons/ai"
-import {AiFillMinusCircle} from "react-icons/ai"
+import {BsFillPatchPlusFill} from "react-icons/bs"
+import {BsFillPatchMinusFill} from "react-icons/bs"
 
 function JedanSesir({product, onAdd, remove, uKorpi}) {
     
-  return <div className={uKorpi === 1 ? "card" : "card-cart"}>
-      <img className={uKorpi === 1 ? "card-img-top" : "card-uKorpi"} src={product.slika} alt="" />
-      <div className="card-body">
-          <h3 className="card-title">{product.naslov}</h3>
-          <p className="card-text">{product.opis}</p>
+  return <div className={uKorpi === 1 ? "stavka" : "stavkaKorpa"}>
+      <img className={uKorpi === 1 ? "slika" : "stavka-uKorpi"} src={product.slika} alt="" />
+      <div className="stavka-telo">
+          <h3 className="stavka-naslov">{product.naslov}</h3>
+          <p className="stavka-opis">{product.opis}</p>
       </div>
 
       {uKorpi === 1 ? (
       <>
-      <button className="button" onClick={()=>onAdd(product.naslov)}>
-           <AiFillPlusCircle /> Dodaj
+      <button className="dugme" onClick={()=>onAdd(product.naslov, product.id)}>
+           <BsFillPatchPlusFill /> Dodaj
      </button>
-      <button className="button" onClick={()=>remove(product.naslov)}>
-           <AiFillMinusCircle /> Izbrisi
+      <button className="dugme" onClick={()=>remove(product.naslov, product.id)}>
+           <BsFillPatchMinusFill /> Izbrisi
       </button>
       </>
       ) : (<>
-      <h3 className='button'>Kolicina: {product.kolicina}</h3>
+      <p className='kolicina'>Kolicina: {product.kolicina}</p>
       </>) }
       
   </div>;

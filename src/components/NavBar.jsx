@@ -1,5 +1,5 @@
 import React from 'react';
-import {AiOutlineShoppingCart} from "react-icons/ai"
+import {BsFillBasketFill} from "react-icons/bs"
 import {Link} from "react-router-dom";
 
 function NavBar({proizvodUKorpi}) {
@@ -8,7 +8,7 @@ function NavBar({proizvodUKorpi}) {
       <Link to="/"> M&M Couture - hats</Link>
    
      <Link to="/korpa" className="kolica">
-          <AiOutlineShoppingCart />
+          <BsFillBasketFill />
           <p className="broj">{proizvodUKorpi}</p>
       </Link>
     

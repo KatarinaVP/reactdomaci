@@ -9,8 +9,8 @@ import {BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   const [proizvodUKorpi, dodajUKorpu]=useState(0);
-
-  const [product, postaviProizvode]=useState([
+  const [proizvod, postaviKorpu]=useState([]);
+  const [product]=useState([
     {
         id:1,
         slika: "https://static.shipgratis.eu/zoh4eiLi/IMG/86400/9WapXOAByYzmKd3z9EGiHg37dKvDGm-FStyjlv1VHSs/fit/251/251/no/1/aHR0cHM6Ly9zdGF0aWNiYWNrZW5kLnNoaXBncmF0aXMuZXUvbWVkaWEvY2F0YWxvZy9wcm9kdWN0LzEvMi8xMjNmNjNkNThlYzBmYTdmMWFiMTM1YzIwMTVmMDY3ZjI5YWQxMmM3LmpwZWc", 
@@ -41,15 +41,32 @@ function App() {
 
     },
 ]);
-function dodaj(naslov){
-  dodajUKorpu(proizvodUKorpi + 1);
+function osveziKorpu(){
+  let noviProizvodi=product.filter((prod)=>prod.kolicina>0);
+  postaviKorpu(noviProizvodi);
 
 }
-function obrisi(naslov){
+function dodaj(naslov, id){
+  dodajUKorpu(proizvodUKorpi + 1);
+  product.forEach((prod)=>{
+    if(prod.id===id){
+      prod.kolicina++;
+    }
+  })
+  osveziKorpu();
+}
+function obrisi(naslov, id){
   if(proizvodUKorpi>0){
     dodajUKorpu(proizvodUKorpi -1);
   }
+  product.forEach((prod)=>{
+    if(prod.id===id){
+      prod.kolicina--;
+    }
+  })
+  osveziKorpu();
 }
+
 
   return (
     <BrowserRouter className="App">
@@ -59,7 +76,7 @@ function obrisi(naslov){
       <Routes>
         <Route path="/" element={<Sesiri product={product} onAdd={dodaj} remove={obrisi}/>} />
 
-        <Route path="/korpa" element={<Korpa product={product}/>}/>
+        <Route path="/korpa" element={<Korpa product={proizvod}/>}/>
 
       </Routes>
 
