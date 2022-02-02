@@ -22,6 +22,9 @@ function JedanSesir({product, onAdd, remove, uKorpi}) {
       </>
       ) : (<>
       <p className='kolicina'>Kolicina: {product.kolicina}</p>
+      <button className="dugmeKorpa" onClick={()=>remove(product.naslov, product.id)}>
+           <BsFillPatchMinusFill /> Izbrisi
+      </button>
       </>) }
       
   </div>;

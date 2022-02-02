@@ -6,6 +6,7 @@ import {useState} from "react";
 import Footer from "./components/Footer";
 import Korpa from "./components/Korpa";
 import {BrowserRouter, Routes, Route } from "react-router-dom";
+import Kontakt from "./components/Kontakt";
 
 function App() {
   const [proizvodUKorpi, dodajUKorpu]=useState(0);
@@ -29,7 +30,7 @@ function App() {
         id:3,
         slika: "https://www.mmcouture.co/wp-content/uploads/2019/07/01-Indy-Light-grey-hat.jpg",
         naslov: "Rozi sesir",
-        opis: "Sesir u rozoj boji pogodan za sve prilike",
+        opis: "Sesir u rozoj boji",
         kolicina: 0,
     },
     {
@@ -76,7 +77,11 @@ function obrisi(naslov, id){
       <Routes>
         <Route path="/" element={<Sesiri product={product} onAdd={dodaj} remove={obrisi}/>} />
 
-        <Route path="/korpa" element={<Korpa product={proizvod}/>}/>
+        <Route path="/korpa" element={<Korpa product={proizvod} remove={obrisi}/>}/>
+
+        <Route path="/kontakt" element={<Kontakt/>}/>
+
+        
 
       </Routes>
 

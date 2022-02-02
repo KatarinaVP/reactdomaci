@@ -1,9 +1,9 @@
 import React from 'react';
 import JedanSesir from './JedanSesir';
 
-const Korpa = ({product}) => {
+const Korpa = ({product, remove}) => {
   return <div className='container'> 
-      {product.map((prod)=>(<JedanSesir product={prod} key={prod.id} uKorpi={0}/>))}
+      {product.map((prod)=>(<JedanSesir product={prod} key={prod.id} uKorpi={0} remove={remove}/>))}
   </div>;
 };
 
